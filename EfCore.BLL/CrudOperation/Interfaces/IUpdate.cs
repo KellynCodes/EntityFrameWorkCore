@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EfCore.DAL.Models;
 
 namespace EfCore.BLL.CrudOperation.Interfaces
 {
     public interface IUpdate
     {
-        Task Run(int id);
+        Task Run(int id, User user);
     }
 }

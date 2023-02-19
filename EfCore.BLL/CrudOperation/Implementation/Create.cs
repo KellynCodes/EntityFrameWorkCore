@@ -1,79 +1,71 @@
 ﻿using EfCore.BLL.CrudOperation.Interfaces;
-using EfCore.DAL.EfCoreSetup;
 using EfCore.DAL.Models;
+using EfCore.BLL.Services;
 
 namespace EfCore.BLL.CrudOperation.Implementation
 {
     public class Create : ICreate
     {
-        private readonly ReliconDbFactory reliconDbFactory = new();
 
-        public async Task CreateUserAsync()
+        public async Task CreateUserAsync(User user, Tasks tasks, Tag tag)
         {
-            var DbContext = reliconDbFactory.CreateDbContext(null);
-
-
             var NewUser = new User
             {
-                Name = "John Brendan",
-                UserName = "Brendanny",
-                Email = "brendanny@gmail.com",
-                Password = "12345",
-                Phone = "08144217359",
-                Address = "Igbo-Etiti local Govt. Enugu state, Nigeria",
-                IsActive = true,
-                CreatedAt = DateTime.Now,
+                Name = user.Name,
+                UserName = user.UserName,
+                Email = user.Email,
+                Password = user.Password,
+                Phone = user.Password,
+                Address = user.Address,
+                IsActive = user.IsActive,
+                CreatedAt = user.CreatedAt,
 
                 Tasks = new List<Tasks>()
                 {
 
                    new Tasks()
                    {
-                        Name = "Hiking",
-                         Description = "Blala Blue",
+                        Name = tasks.Name,
+                         Description = tasks.Description,
                          Tags = new List<Tag>()
                          {
                              new Tag()
                              {
-                                 Name = "OutDoor",
-                                 Description = "We are going to play football tomorrow by 2.00pm"
+                                 Name = tag.Name,
+                                 Description = tag.Description
                              },
-
-                             new Tag()
-                             {
-                                 Name = "Activity",
-                                 Description = "Run arround the field before starting play.",
-                             }
                          }
                      },
 
-                     new Tasks
-                     {
-                         Name = "Eating",
-                         Description = "BreakFast: Tea and bread, Launch: Pap and Beans, Dinner: Pap and Beans.",
-
+                 }
+            };
+            string Message = "User, Tasks and tag created successfully";
+          await DbContextSave.AddChangesAsync(NewUser, Message);
+        }
+            
+        public async Task CreateTaskAsync(Tasks tasks, Tag tag)
+        {
+            var newTask = new Tasks
+            {
+                        Name = tasks.Name,
+                         Description = tasks.Description,
                          Tags = new List<Tag>()
                          {
                              new Tag()
                              {
-                                 Name = "Self Care",
-                                 Description = "Putting myself first"
-                             }
-                        }
-                     }
-                 }
+                                 Name = tag.Name,
+                                 Description = tag.Description
+                             },
+                         }
             };
 
-            DbContext.Add(NewUser);
-            int RowsAffected = await DbContext.SaveChangesAsync();
-            string Message = (RowsAffected > 0) ? "User created successfully." : "User creation was not successfull.";
-            Console.WriteLine(Message);
+          
+            string Message = "Task created successfully.";
+            await DbContextSave.AddChangesAsync(newTask, Message);
         }
 
         public async Task<IEnumerable<User>> CreateUserAsync(User user)
         {
-            var DbContext = reliconDbFactory.CreateDbContext(null);
-
             IList<User> newUser = new List<User>();
             User RegisteredUser = new User
             {
@@ -87,11 +79,11 @@ namespace EfCore.BLL.CrudOperation.Implementation
                 IsActive = user.IsActive
             };
 
-            DbContext.Add(RegisteredUser);
+          
+            
+            string Message = "User created successfully";
+            await DbContextSave.AddChangesAsync(RegisteredUser, Message);
             newUser.Add(RegisteredUser);
-           int RowsAffected = await DbContext.SaveChangesAsync();
-            string Message = (RowsAffected > 0) ? "User created successfully." : "User creation was not successfull.";
-            Console.WriteLine(Message);
             return newUser;
         }
     }
