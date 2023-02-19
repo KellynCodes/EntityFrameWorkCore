@@ -4,6 +4,7 @@ using EfCore.DAL.EfCoreSetup;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCore.DAL.Migrations
 {
     [DbContext(typeof(ReliconDbContext))]
-    partial class ReliconDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230218165326_AddedTaskAndTagTable")]
+    partial class AddedTaskAndTagTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +47,7 @@ namespace EfCore.DAL.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<byte[]>("TimeStamp")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -82,6 +86,7 @@ namespace EfCore.DAL.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<byte[]>("TimeStamp")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -122,15 +127,12 @@ namespace EfCore.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("TimeStamp")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("UpdatedAt")

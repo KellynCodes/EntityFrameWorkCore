@@ -1,4 +1,3 @@
-﻿using EfCore.DAL.EfCoreSetup;
+﻿using EfCore.BLL.Utility;
 
-ReliconDbFactory reliconDbFactroy = new ReliconDbFactory(); 
-reliconDbFactroy.CreateDbContext(null);
+await Application.Run();

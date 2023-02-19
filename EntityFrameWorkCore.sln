@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCore.DAL", "EfCore.DAL\Ef
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCore.UI", "EfCore.UI\EfCore.UI.csproj", "{D3519C98-3630-47E9-87F9-50A85D52D6DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCore.BLL", "EfCore.BLL\EfCore.BLL.csproj", "{2FDC2461-CA39-49BC-9783-AB178B92051D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D3519C98-3630-47E9-87F9-50A85D52D6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3519C98-3630-47E9-87F9-50A85D52D6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3519C98-3630-47E9-87F9-50A85D52D6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FDC2461-CA39-49BC-9783-AB178B92051D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FDC2461-CA39-49BC-9783-AB178B92051D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FDC2461-CA39-49BC-9783-AB178B92051D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FDC2461-CA39-49BC-9783-AB178B92051D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
